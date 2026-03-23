@@ -21,6 +21,22 @@
     </header>
     <main class="container todo__container">
         <h1 class="todo__title">Задачи</h1>
+        <form class="form-add">
+            <input type="text" class="form-add__input" placeholder="Введите задачу">
+            <button class="form-add__batton" type="sumbit">Добавить</button>
+        </form>
+        <div class="toolbat">
+            <input type="text" placeholder="Поиск задач" class="toojbat__search">
+            <div class="toolbat__tabs tabs">
+                <button class="tabs__btn">Всё</button>
+                <button class="tabs__btn">Активные</button>
+                <button class="tabs__btn">Завершенные</button>
+            </div>
+            <select class="toolbat__sort">
+                <option value="1">Сначала старые</option>
+                <option value="2">Сначала новые</option>
+            </select>
+        </div>
     </main>
 </body>
 
