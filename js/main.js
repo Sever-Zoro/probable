@@ -1,91 +1,29 @@
-let title = "";
-if (title === "") {
-    console.log("НАзвание задачи не указана")
-} else {
-    console.log("Задача", title)
-}
-
-let taskCount = 5;
-if (taskCount === 0) {
-    console.log("Список пуст")
-} else if (taskCount <= 0) {
-    console.log("")
-} else {
-    console.log("Задач очень много")
-}
-
-let tasks = [
-    {
-        id: 1,
-        title: "Купить Молоко",
-        status: "активна",
-    },
-    {
-        id: 2,
-        title: "Сделать Уроки",
-        status: "выполнена",
-    },
-    {
-        id: 3,
-        title: "Погулять С собакой",
-        status: "активна",
-    },
-]
-for (let i = 0; i < tasks.length; i++) {
-    console.log(tasks[i].id + ":" + tasks[i].title)
-}
-
-for (let task of tasks) {
-    console.log(task.id + ":" + task.title)
-}
-
-let i = 0;
-let total = 0;
-let active = 0;
-let done = 0;
-while (i < tasks.length) {
-    total++;
-    if (tasks[i].status === "выполнена") {
-        done++;
-    } else {
-        active++;
-    }
-    i++;
-}
-console.log("Всего: ", total, "Активных", active, "выполненных", done)
-
-for (let task of tasks) {
-    if (task.status === "активна") {
-        console.log("Активная задача: ", task.title)
-    }
-}
-
-tasks.forEach((task) => {
-    console.log(task.id + ":" + task.title + "(" + task.status + ")");
-})
-
-let searchTitle = "Купить Молоко"
-let found = null
-
-for (let task of tasks){
-    if ( task.title === searchTitle) {
-        found = task;
-        break;
-    }
-}
-if (found) {
-    console.log("найденная задача: ", found)
-} else {
-    console.log("задача не найдена")
-}
 
 
-let activeTasks = []
+const input = document.querySelector(".form-add__input")
+const addButton = document.querySelector(".form-add__batton")
 
-for ( let task of tasks) {
-    if (task.status === "активна") {
-        activeTasks.push(task)
-    }
-}
+const container = document.querySelector(".tasks")
 
-console.log("активные задачи: ", activeTasks)
+const task = document.createElement("div")
+task.classList.add("task")
+
+const content = document.createElement("div")
+content.classList.add("task__content")
+
+task.append(content)
+
+const title = document.createElement("div")
+const meta = document.createElement("div")
+
+title.classList.add("task__title")
+meta.classList.add("task__meta")
+
+content.append(title, meta)
+
+const actions = document.createElement("div")
+actions.classList.add("task__actions")
+
+task.append(actions)
+
+console.log(task)
