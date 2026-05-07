@@ -5,8 +5,8 @@ const container = document.querySelector(".tasks");
 const searchInput = document.querySelector(".footer__search");
 const footer = document.querySelector(".footer-controls");
 const sortSelect = document.querySelector(".toolbar__sort");
-
-const tasks = [
+const form = document.querySelector(".form-add");
+/*const tasks = [
     {
         title: "Купить хлеб",
         date: "13.03.25, 05:25",
@@ -17,8 +17,36 @@ const tasks = [
         date: "13.03.25, 14:35",
         done: false,
     }
-];
+];*/
+const tasks = [];
 
+form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    addTask();
+});
+
+function addTask() {
+    const text = input.value.trim();
+    if (text === "" || text.length < 3) {
+        input.classList.add("input--error");
+        return;
+    };
+
+    input.classList.remove("input--error");
+
+
+    const newTask = {
+        id: tasks.length + 1,
+        title: text,
+        done: false,
+        date: "12.06.1999"
+    };
+
+    tasks.push(newTask);
+
+    input.value = "";
+    renderAll();
+}
 function renderTask(task) {
     //container.innerHTML = '';
 
@@ -76,14 +104,6 @@ function renderTask(task) {
         tasks.splice(index, 1);
         renderAll();
     });
-
-    /*item.addEventListener("click", (e) => {
-      if (!e.target.closest(".task__action")) {
-        task.done = !task.done;
-        item.classList.toggle("task--done", task.done);
-      }
-    });*/
-
 
     item.addEventListener("click", (event) => {
         if (event.target.closest(".task__action")) return;
