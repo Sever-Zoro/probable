@@ -19,7 +19,14 @@ const form = document.querySelector(".form-add");
     }
 ];*/
 const tasks = [];
-
+function formatDate(date) {
+    const DD = date.getDate().toString().padStart(2, '0');
+    const MM = (date.getMonth() + 1).toString().padStart(2, '0');
+    const GG = date.getFullYear();
+    const HH = date.getHours().toString().padStart(2, '0');
+    const MIN = date.getMinutes().toString().padStart(2, '0');
+    return `${DD}.${MM}.${GG}, ${HH}:${MIN}`;
+}
 form.addEventListener("submit", (e) => {
     e.preventDefault();
     addTask();
@@ -35,11 +42,17 @@ function addTask() {
     input.classList.remove("input--error");
 
 
-    const newTask = {
+    /*const newTask = {
         id: tasks.length + 1,
         title: text,
         done: false,
         date: "12.06.1999"
+    };*/
+    const newTask = {
+        id: Date.now (),
+        title: text,
+        done: false,
+        date: formatDate(new Date())
     };
 
     tasks.push(newTask);
@@ -132,3 +145,30 @@ function renderAll() {
     })
 }
 renderAll();
+
+
+const now = new Date();
+console.log(now);
+
+const day = now.getDate();
+const mouth = now.getMonth() + 1;
+const year = now.getFullYear();
+console.log(`${day}.${mouth}.${year}`);
+
+const hours = now.getHours();
+const minutes = now.getMinutes();
+const seconda = now.getSeconds();
+console.log(`${hours}:${minutes}:${seconda}`);
+
+console.log(now.toLocaleDateString());
+
+/*function DDMM(date) {
+    const DD = date.getDate().toString().padStart(2, '0');
+    const MM = (date.getMonth() + 1).toString().padStart(2, '0');
+    const GG = date.getFullYear();
+    const HH = date.getHours().toString().padStart(2, '0');
+    const MIN = date.getMinutes().toString().padStart(2, '0');
+    return `${DD}.${MM}.${GG}, ${HH}:${MIN}`;
+}*/
+
+console.log(formatDate(new Date()));
